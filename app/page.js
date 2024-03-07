@@ -9,13 +9,13 @@ import SecondPdf from "@/components/pdf/SecondPdf";
 export default function Home() {
 
   return (<main>
-    <div className="flex flex-col parentdiv  justify-center items-center ">
+    {/* <div className="flex flex-col parentdiv  justify-center items-center ">
       <SecondPdf />
       <FirstPdf />
     </div>
     <PrintButton />
     <PdfDownload/>
-    <MyPdfComponet/>
+    <MyPdfComponet/> */}
   </main>
   );
 }
