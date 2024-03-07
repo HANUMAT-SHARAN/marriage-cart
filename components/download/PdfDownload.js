@@ -1,10 +1,10 @@
 "use client"
 import { useEffect } from 'react';
+import html2pdf from 'html2pdf.js';
 
 const PdfDownload = () => {
   useEffect(() => {
     const downloadPDF = async () => {
-      const html2pdf = await import('html2pdf.js');
       const element = document.querySelector(".parentdiv");
       const opt = {
         margin:       0,
