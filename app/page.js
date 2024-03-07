@@ -10,8 +10,8 @@ export default function Home() {
 
   return (<main>
     <div className="flex flex-col parentdiv  justify-center items-center ">
-      <SecondPdf />
-      <FirstPdf />
+      {/* <SecondPdf />
+      <FirstPdf /> */}
     </div>
     <PdfDownload/>
   </main>
