@@ -1,36 +1,37 @@
-"use client";
-// you can also use a function to return the target element besides using React refs
-const getTargetElement = () => document.getElementById("container");
-import html2pdf from 'html2pdf.js';
-
+"use client"
+import { useEffect } from 'react';
 
 const PdfDownload = () => {
+  useEffect(() => {
+    const downloadPDF = async () => {
+      const html2pdf = await import('html2pdf.js');
+      const element = document.querySelector(".parentdiv");
+      const opt = {
+        margin:       0,
+        filename:     'myfile.pdf',
+        image:        { type: 'png', quality: 1 },
+        html2canvas:  { scale: 1},
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
 
+      html2pdf()
+        .from(element)
+        .set(opt)
+        .save();
+    }
 
-  const downloadPDF = () => {
-    const element = document.querySelector(".parentdiv");
-    const opt = {
-      margin:       0,
-      filename:     'myfile.pdf',
-      image:        { type: 'png', quality: 1 },
-      html2canvas:  { scale: 1},
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    document.getElementById('downloadButton').addEventListener('click', downloadPDF);
+
+    return () => {
+      document.getElementById('downloadButton').removeEventListener('click', downloadPDF);
     };
-    
-    // Start the PDF generation
-    html2pdf()
-      .from(element)
-      .set(opt)
-      .save();
-  }
+  }, []);
 
   return (
     <div>
-      <button onClick={downloadPDF}>Download PDF</button>
-      <div id="container">
-        <div>
-         
-        </div>
+      <button id="downloadButton">Download PDF</button>
+      <div className="parentdiv">
+        {/* Your content here */}
       </div>
     </div>
   );

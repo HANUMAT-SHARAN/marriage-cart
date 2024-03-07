@@ -1,3 +1,4 @@
+
 import PrintButton from "@/components/PrintButton ";
 import PdfDownload from "@/components/download/PdfDownload";
 
@@ -13,7 +14,7 @@ export default function Home() {
       <SecondPdf />
       <FirstPdf />
     </div>
-    {/* <PdfDownload/> */}
+    <PdfDownload/>
   </main>
   );
 }
