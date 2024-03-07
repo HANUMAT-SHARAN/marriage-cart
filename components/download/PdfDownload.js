@@ -1,38 +1,26 @@
-"use client"
-import { useEffect } from 'react';
-import html2pdf from 'html2pdf.js';
+"use client";
 
 const PdfDownload = () => {
-  useEffect(() => {
-    const downloadPDF = async () => {
-      const element = document.querySelector(".parentdiv");
-      const opt = {
-        margin:       0,
-        filename:     'myfile.pdf',
-        image:        { type: 'png', quality: 1 },
-        html2canvas:  { scale: 1},
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
-
-      html2pdf()
-        .from(element)
-        .set(opt)
-        .save();
-    }
-
-    document.getElementById('downloadButton').addEventListener('click', downloadPDF);
-
-    return () => {
-      document.getElementById('downloadButton').removeEventListener('click', downloadPDF);
-    };
-  }, []);
-
+  const downloadPdf = () => {
+    fetch(`https://average-foal-garb.cyclic.app?url=${window.location}`)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "webpage.pdf";
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => console.error("Error downloading PDF:", error));
+  };
   return (
     <div>
-      <button id="downloadButton">Download PDF</button>
-      <div className="parentdiv">
-        {/* Your content here */}
-      </div>
+      <button onClick={downloadPdf} id="downloadButton">
+        Download PDF
+      </button>
+      <div className="parentdiv">{/* Your content here */}</div>
     </div>
   );
 };
