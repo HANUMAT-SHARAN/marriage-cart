@@ -2,7 +2,7 @@
 
 const PdfDownload = () => {
   const downloadPdf = () => {
-    fetch(`https://average-foal-garb.cyclic.app?url=${window.location}`)
+    fetch(`https://average-foal-garb.cyclic.app/generate-pdf?url=${window.location}`)
       .then((response) => response.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(new Blob([blob]));
