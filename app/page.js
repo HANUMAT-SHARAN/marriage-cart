@@ -13,7 +13,6 @@ export default function Home() {
       <SecondPdf />
       <FirstPdf />
     </div>
-    <PrintButton />
     <PdfDownload/>
   </main>
   );
