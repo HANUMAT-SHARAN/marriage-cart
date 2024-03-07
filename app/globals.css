@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 200px solid transparent; /* Change size as needed */
+    border-right: 0px solid transparent; /* Change size as needed */
+    border-bottom: 200px solid rgb(5, 5, 5); /* Change color as needed */
+  }
+  .diagonal{
+
+    border-bottom: 40px solid rgb(59, 56, 56);
+    width: calc(305px* 1.43);
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    bottom: 25px;
+    left: 0px;
+    
+    
+    }
